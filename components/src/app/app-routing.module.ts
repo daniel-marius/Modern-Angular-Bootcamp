@@ -18,6 +18,9 @@ const routes: Routes = [
   },
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> e61eb90 (Fourth commit)
   {
     path: 'views',
     loadChildren: () =>
@@ -27,7 +30,10 @@ const routes: Routes = [
     path: 'mods',
     loadChildren: () => import('./mods/mods.module').then((m) => m.ModsModule),
   },
+<<<<<<< HEAD
+=======
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
   { path: '', component: HomeComponent },
   { path: '**', component: NotFoundComponent },
 ];

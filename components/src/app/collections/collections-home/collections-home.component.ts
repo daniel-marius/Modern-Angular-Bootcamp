@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionsHomeComponent implements OnInit {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
   constructor() { }
 
@@ -14,6 +16,7 @@ export class CollectionsHomeComponent implements OnInit {
   }
 
 =======
+>>>>>>> e61eb90 (Fourth commit)
   data = [
     { name: 'James', age: 24, job: 'Designer', employed: true },
     { name: 'Jill', age: 26, job: 'Engineer', employed: false },
@@ -29,5 +32,8 @@ export class CollectionsHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+<<<<<<< HEAD
+=======
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
 }

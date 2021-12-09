@@ -6,10 +6,13 @@ import { CollectionsHomeComponent } from './collections-home/collections-home.co
 import { TableComponent } from './table/table.component';
 import { SharedModule } from '../shared/shared.module';
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 @NgModule({
   declarations: [CollectionsHomeComponent, TableComponent],
 =======
+>>>>>>> e61eb90 (Fourth commit)
 import { BiographyComponent } from './biography/biography.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { PartnersComponent } from './partners/partners.component';
@@ -17,7 +20,10 @@ import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [CollectionsHomeComponent, TableComponent, BiographyComponent, CompaniesComponent, PartnersComponent, TabsComponent],
+<<<<<<< HEAD
+=======
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
   imports: [CommonModule, CollectionsRoutingModule, SharedModule]
 })
 export class CollectionsModule {}

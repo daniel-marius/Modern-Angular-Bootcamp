@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+import { Component, OnInit, Input } from '@angular/core';
+=======
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 =======
 import { Component, OnInit, Input } from '@angular/core';
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
 
 @Component({
   selector: 'app-table',
@@ -11,6 +15,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
   constructor() { }
 
@@ -18,6 +24,7 @@ export class TableComponent implements OnInit {
   }
 
 =======
+>>>>>>> e61eb90 (Fourth commit)
   @Input('class') classNames = '';
 
   @Input('data') data: any[] = [];
@@ -26,5 +33,8 @@ export class TableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+<<<<<<< HEAD
+=======
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
 }

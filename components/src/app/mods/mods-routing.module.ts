@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 const routes: Routes = [];
 
@@ -11,6 +13,7 @@ const routes: Routes = [];
 })
 export class ModsRoutingModule { }
 =======
+>>>>>>> e61eb90 (Fourth commit)
 import { ModsHomeComponent } from './mods-home/mods-home.component';
 
 const routes: Routes = [
@@ -25,4 +28,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ModsRoutingModule {}
+<<<<<<< HEAD
+=======
 >>>>>>> bbdceda (Third commit)
+>>>>>>> e61eb90 (Fourth commit)
