@@ -1,0 +1,32 @@
+<input
+  type="file"
+  appReadexcel
+  #readexcel="readexcel"
+  (eventEmitter)="DataFromEventEmitter($event)"
+/>
+
+<br />
+
+<a style="cursor: pointer" (click)="exportexcel()">
+  <mat-icon> cloud_download</mat-icon>
+</a>
+<table id="excel-table">
+  <tr>
+    <th>Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Country</th>
+    <th>Age</th>
+    <th>Date</th>
+  </tr>
+  <tr *ngFor="let n of readexcel.excelObservable | async">
+    <td>{{ n.Id }}</td>
+    <td>{{ n["First Name"] }}</td>
+    <td>{{ n["Last Name"] }}</td>
+    <td>{{ n.Gender }}</td>
+    <td>{{ n.Country }}</td>
+    <td>{{ n.Age }}</td>
+    <td>{{ n.Date }}</td>
+  </tr>
+</table>
