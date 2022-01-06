@@ -3,7 +3,7 @@
     *ngFor="let forecast of forecast$ | async"
     class="weather-item list-group-item"
   >
-    <p class="temp">{{ forecast.temp | number: "1.0-0" }}°C</p>
-    <p class="day">{{ forecast.dateString | date: "E d" }}</p>
+    <p class="temp">{{ forecast.temp | number: '1.0-0' }}°C</p>
+    <p class="day">{{ forecast.dateString | date: 'E' }}</p>
   </li>
 </ul>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationListComponent } from './notification-list.component';
+import { NaArticleListComponent } from './na-article-list.component';
 
-describe('NotificationListComponent', () => {
-  let component: NotificationListComponent;
-  let fixture: ComponentFixture<NotificationListComponent>;
+describe('NaArticleListComponent', () => {
+  let component: NaArticleListComponent;
+  let fixture: ComponentFixture<NaArticleListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationListComponent ]
+      declarations: [ NaArticleListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationListComponent);
+    fixture = TestBed.createComponent(NaArticleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

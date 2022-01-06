@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NotificationsService } from './notifications.service';
+import { NewsApiService } from './news-api.service';
 
-describe('NotificationsService', () => {
+describe('NewsApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NotificationsService = TestBed.get(NotificationsService);
+    const service: NewsApiService = TestBed.get(NewsApiService);
     expect(service).toBeTruthy();
   });
 });

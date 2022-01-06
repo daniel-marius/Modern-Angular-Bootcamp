@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { scan } from 'rxjs/operators';
 
-interface Command {
+export interface Command {
   id: number;
   type: 'success' | 'error' | 'clear';
   text?: string;
@@ -12,14 +12,12 @@ interface Command {
   providedIn: 'root'
 })
 export class NotificationsService {
-  messages: Subject<any>;
+  messagesInput: Subject<Command>;
+  messagesOutput: Observable<Command[]>;
 
   constructor() {
-    this.messages = new Subject<Command>();
-  }
-
-  getMessages() {
-    return this.messages.pipe(
+    this.messagesInput = new Subject<Command>();
+    this.messagesOutput = this.messagesInput.pipe(
       scan((acc: Command[], value: Command) => {
         if (value.type === 'clear') {
           return acc.filter(message => message.id !== value.id);
@@ -31,23 +29,35 @@ export class NotificationsService {
   }
 
   addSuccess(message: string) {
-    this.messages.next({
-      id: this.randomId(),
+    const id = this.randomId();
+
+    this.messagesInput.next({
+      id,
       text: message,
       type: 'success'
     });
+
+    setTimeout(() => {
+      this.clearMesssage(id);
+    }, 5000);
   }
 
   addError(message: string) {
-    this.messages.next({
-      id: this.randomId(),
+    const id = this.randomId();
+
+    this.messagesInput.next({
+      id,
       text: message,
       type: 'error'
     });
+
+    setTimeout(() => {
+      this.clearMesssage(id);
+    }, 5000);
   }
 
-  clearMessage(id: number) {
-    this.messages.next({
+  clearMesssage(id: number) {
+    this.messagesInput.next({
       id,
       type: 'clear'
     });
