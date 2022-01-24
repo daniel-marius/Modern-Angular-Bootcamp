@@ -4,7 +4,7 @@ import { scan } from 'rxjs/operators';
 
 export interface Command {
   id: number;
-  type: 'success' | 'error' | 'clear';
+  type: 'success' | 'error' | 'warning' | 'clear';
   text?: string;
 }
 
@@ -49,6 +49,20 @@ export class NotificationsService {
       id,
       text: message,
       type: 'error'
+    });
+
+    setTimeout(() => {
+      this.clearMesssage(id);
+    }, 5000);
+  }
+
+  addWarning(message: string) {
+    const id = this.randomId();
+
+    this.messagesInput.next({
+      id,
+      text: message,
+      type: 'warning'
     });
 
     setTimeout(() => {

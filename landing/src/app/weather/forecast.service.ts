@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import {
   map,
+  delay,
   switchMap,
   pluck,
   mergeMap,
@@ -11,9 +12,14 @@ import {
   share,
   tap,
   catchError,
-  retry
+  retry,
+  retryWhen
 } from 'rxjs/operators';
 import { NotificationsService } from '../notifications/notifications.service';
+
+const DEFAULT_MAX_RETRIES = 5;
+const DEFAULT_INITIAL_RETRIES = 3;
+const DEFAULT_MAX_MILLISECONDS = 2000;
 
 interface OpenWeatherResponse {
   list: {
@@ -71,17 +77,60 @@ export class ForecastService {
         err => observer.error(err)
       );
     }).pipe(
-      retry(2),
-      tap(() => {
-        this.notificationsService.addSuccess('Got your location');
+      this.delayedRetry(DEFAULT_MAX_MILLISECONDS, DEFAULT_INITIAL_RETRIES),
+      tap({
+        next: () => {
+          this.notificationsService.addSuccess('Got your location');
+
+        },
+        error: (err) => {
+          console.log('Error: ', err);
+        },
+        complete: () => {
+          console.log('Action complete!');
+        }
+
       }),
       catchError(err => {
         // #1 - Handle the error
         this.notificationsService.addError('Failed to get your location');
+        console.log('Error2: ', err);
 
         // #2 - Return a new observable
         return throwError(err);
       })
     );
+  }
+
+  getErrorMessage(maxRetry: number, maxDelay: string) {
+    this.notificationsService.addError(`Tried to load resource for ${maxRetry} times without success. Total time elapsed: ${maxDelay}. Giving up!`);
+    return `Tried to load resource for ${maxRetry} times without success. Total time elapsed: ${maxDelay}. Giving up!`;
+  }
+
+  delayedRetry(delayMs: number, maxRetry = DEFAULT_MAX_RETRIES) {
+    let retries = maxRetry;
+    const startTime = new Date().getTime();
+
+    return (src: Observable<any>) =>
+      src.pipe(
+        retryWhen((errors: Observable<any>) => errors.pipe(
+          delay(delayMs),
+          mergeMap((error) => {
+
+            if (retries-- > 0) {
+              const endTime = new Date().getTime();
+              const diff = (endTime - startTime) / 1000 + ' Seconds';
+
+              this.notificationsService.addWarning(`Attempt: ${retries} for fetching data. Time Elapsed: ${diff}. Takes longer than usual...`);
+              return of(error);
+            }
+            else {
+              const endTime = new Date().getTime();
+              const diff = (endTime - startTime) / 1000 + ' Seconds';
+              return throwError(this.getErrorMessage(maxRetry, diff))
+            }
+          })
+        ))
+      );
   }
 }
