@@ -1,0 +1,8 @@
+<ngx-slider
+  [(value)]=value
+  [(highValue)]=highValue
+  [options]="options"
+  (mouseup)="sliderEvent()"
+></ngx-slider>
+<div>Lower Range Value: {{ value }}</div>
+<div>High Range Value: {{ highValue }}</div>
