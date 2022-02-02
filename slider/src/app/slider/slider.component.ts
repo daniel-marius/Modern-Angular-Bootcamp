@@ -14,7 +14,9 @@ export class SliderComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.value, this.highValue);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.value = changes['value'].currentValue;
@@ -23,5 +25,17 @@ export class SliderComponent implements OnInit, OnChanges {
 
   sliderEvent(): void {
     this.values.emit({ lower: this.value, upper: this.highValue });
+  }
+
+  onChangeValue($event: any): void {
+    if ($event.target.value) {
+      this.values.emit({ lower: $event.target.value, upper: this.highValue });
+    }
+  }
+
+  onChangeHighValue($event: any): void {
+    if ($event.target.value) {
+      this.values.emit({ lower: this.value, upper: $event.target.value });
+    }
   }
 }

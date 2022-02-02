@@ -1,8 +1,11 @@
-<ngx-slider
-  [(value)]=value
-  [(highValue)]=highValue
-  [options]="options"
-  (mouseup)="sliderEvent()"
-></ngx-slider>
-<div>Lower Range Value: {{ value }}</div>
-<div>High Range Value: {{ highValue }}</div>
+
+  <p>Set Min Value: <input type="number" step="0.01" [(ngModel)]="value" (input)="onChangeValue($event)"/></p>
+  <p>Set Max Value: <input type="number" step="0.01" [(ngModel)]="highValue" (input)="onChangeHighValue($event)" /></p>
+  <ngx-slider
+    [(value)]="value"
+    [(highValue)]="highValue"
+    [options]="options"
+    (mouseup)="sliderEvent()"
+  ></ngx-slider>
+  <div>Lower Range Value: {{ value }}</div>
+  <div>High Range Value: {{ highValue }}</div>

@@ -1,1 +1,5 @@
-<app-slider [value]=min [highValue]=max [options]="options" (values)="receiveValue($event)"></app-slider>
+<app-slider [value]="min" [highValue]="max" [options]="options" (values)="receiveValue($event)"></app-slider>
+<br />
+<div>
+  <button (click)="onClick()">Click Me!</button>
+</div>
