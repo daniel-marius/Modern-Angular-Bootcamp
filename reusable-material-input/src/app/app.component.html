@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-input-autocomplete
+    inputType="text"
+    label="Number"
+    placeholder="Pick One Number"
+    [control]="convertToFormControl(form.get('field1'))"
+    [options]="filteredOptions$ | async"
+  ></app-input-autocomplete>
+  <app-input-autocomplete
+    inputType="text"
+    label="Number"
+    placeholder="Write Number"
+    [control]="$any(form).controls.field2"
+  ></app-input-autocomplete>
+  <mat-radio-group formControlName="attribute">
+    <app-input-radio
+      name="Sachnummerbasis"
+      value="Sachnummerbasis"
+      [checked]="true"
+    ></app-input-radio>
+    <app-input-radio
+      name="Functional Data"
+      value="Functional Data"
+      [checked]="false"
+    ></app-input-radio>
+  </mat-radio-group>
+  <br />
+  <button mat-raised-button color="primary">Primary</button>
+</form>
+
+<div *ngIf="selectedInput === 'Sachnummerbasis'; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>Sachnummerbasis</ng-template>
+<ng-template #elseBlock>Functional Data</ng-template>
