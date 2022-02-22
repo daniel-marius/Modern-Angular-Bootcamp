@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  docker-frontend:
+    build:
+      context: angular-crash-docker
+      dockerfile: Dockerfile.dev
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./angular-crash-docker/src:/frontend/src
+
+  docker-backend:
+    build:
+      context: angular-crash-docker
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./angular-crash-docker:/backend

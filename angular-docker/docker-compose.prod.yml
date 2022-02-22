@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  nginx-frontend:
+    build:
+      context: angular-crash-docker
+      dockerfile: Dockerfile.prod
+    ports:
+      - '80:80'
+
+  json-backend:
+    build:
+      context: angular-crash-docker
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./angular-crash-docker:/backend
