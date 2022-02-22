@@ -37,16 +37,21 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatDialogRef  } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InputAutocompleteComponent } from './input-autocomplete/input-autocomplete.component';
-import { InputRadioComponent } from './input-radio/input-radio.component';
+import { InputAutocompleteComponent } from './components/input-autocomplete/input-autocomplete.component';
+import { InputRadioComponent } from './components/input-radio/input-radio.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalActionsService } from './services/modal-actions.service';
+import { ConfirmDialogService } from './services/confirm-dialog.service';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, InputAutocompleteComponent, InputRadioComponent],
+  declarations: [AppComponent, InputAutocompleteComponent, InputRadioComponent, ModalComponent, ConfirmDialogComponent, DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -90,7 +95,7 @@ import { InputRadioComponent } from './input-radio/input-radio.component';
     PortalModule,
     ScrollingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [ModalActionsService, ConfirmDialogService, { provide: MatDialogRef, useValue: {} }],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -27,7 +27,39 @@
   <br />
   <button mat-raised-button color="primary">Primary</button>
 </form>
-
-<div *ngIf="selectedInput === 'Sachnummerbasis'; then thenBlock; else elseBlock"></div>
+<br />
+<div
+  *ngIf="selectedInput === 'Sachnummerbasis'; then thenBlock; else elseBlock"
+></div>
 <ng-template #thenBlock>Sachnummerbasis</ng-template>
 <ng-template #elseBlock>Functional Data</ng-template>
+<br />
+<main id="logout-button-holder">
+  <button mat-raised-button id="logout-button" (click)="openLogoutModal()">
+    Logout
+  </button>
+  <button
+    mat-raised-button
+    id="delete-product-button"
+    (click)="openDeleteProductModal()"
+  >
+    Delete Product
+  </button>
+</main>
+<br />
+<button (click)="handleClick()">Save</button>
+<div style="padding: 100px;">
+  {{ dialogSubmissionMessage }}
+</div>
+<div class="container">
+  <div style="padding: 10px;">
+    <button mat-raised-button (click)="openDialogOne()" color="primary">
+      Open Dialog One
+    </button>
+  </div>
+  <div style="padding: 10px;">
+    <button mat-raised-button (click)="openDialogTwo()" color="warn">
+      Open Dialog Two
+    </button>
+  </div>
+</div>
