@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Posts App</span>
+</mat-toolbar>
+<br />
+<div *ngFor="let post of (postList$ | async)">
+  <mat-card>
+    <mat-card-title>{{ post.title | titlecase }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ post.body }}</p>
+      <p>{{ post.id }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a routerLink="{{ post.id }}" routerLinkActive="active">View Details</a>
+      <button mat-raised-button color="primary" (click)="onCreateNewPost()">Create New Post</button>
+    </mat-card-actions>
+  </mat-card>
+  <br />
+</div>

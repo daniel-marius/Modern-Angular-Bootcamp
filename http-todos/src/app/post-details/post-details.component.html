@@ -1,0 +1,6 @@
+<div *ngFor="let post of (currentPost$ | async)">
+  <p>{{ post | json }}</p>
+  <a routerLink="posts">Back</a>
+  <br />
+  <button mat-raised-button color="primary" (click)="onUpdatePost(post.id)">Update Post</button>
+</div>
